@@ -50,12 +50,9 @@ class Activity extends Model
     /**
      * Relation to the user who performed the activity.
      */
-    public function user(): ?BelongsTo
+    public function user()
     {
-        $model = config('auth.providers.users.model');
-
-        return ($model && class_exists($model))
-            ? $this->belongsTo($model, 'user_id')
-            : null;
+        return $this->belongsTo(config('auth.providers.users.model'));
     }
+
 }
