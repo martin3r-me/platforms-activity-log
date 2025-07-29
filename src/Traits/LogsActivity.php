@@ -1,10 +1,10 @@
 <?php
 
-namespace Martin3r\LaravelActivityLog\Traits;
+namespace Platform\ActivityLog\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
-use Martin3r\LaravelActivityLog\Models\Activity;
+use Platform\ActivityLog\Models\ActivityLogActivity;
 
 trait LogsActivity
 {
@@ -46,7 +46,7 @@ trait LogsActivity
      */
     public function activities()
     {
-        return $this->morphMany(Activity::class, 'activityable')->latest();
+        return $this->morphMany(ActivityLogActivity::class, 'activityable')->latest();
     }
 
     /**

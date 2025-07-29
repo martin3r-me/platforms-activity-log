@@ -1,9 +1,9 @@
 <?php
 
-namespace Martin3r\LaravelActivityLog\Http\Livewire\Activities;
+namespace Platform\ActivityLog\Http\Livewire\Activities;
 
 use Livewire\Component;
-use Martin3r\LaravelActivityLog\Models\Activity;
+use Platform\ActivityLog\Models\ActivityLogActivity;
 
 class Index extends Component
 {
@@ -16,7 +16,7 @@ class Index extends Component
             ? collect()
             : $this->model->activities()->latest()->get();
 
-        return view('laravel-activity-log::livewire.activities.index', compact('activities'));
+        return view('activity-log::livewire.activities.index', compact('activities'));
     }
 
     public function save(): void

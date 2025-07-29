@@ -1,11 +1,11 @@
 <?php
 
-namespace Martin3r\LaravelActivityLog\Models;
+namespace Platform\ActivityLog\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Uid\UuidV7;
 
-class Activity extends Model
+class ActivityLogActivity extends Model
 {
     /**
      * The attributes that are mass assignable.
