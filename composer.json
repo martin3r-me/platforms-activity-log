@@ -1,5 +1,5 @@
 {
-  "name": "platform/activity-log",
+  "name": "martin3r/platform-activity-log",
   "autoload": {
     "psr-4": {
       "Platform\\ActivityLog\\": "src/"
