@@ -70,9 +70,15 @@ trait LogsActivity
     /**
      * Convenience alias for manual activities.
      */
-    public function logActivity(string $message): void
+    public function logActivity(string $message, array $metadata = []): void
     {
-        $this->recordActivity('manual', 'manual');
+        $this->activities()->create([
+            'activity_type' => 'manual',
+            'name'          => 'note',
+            'message'       => $message,
+            'user_id'       => auth()->id(),
+            'metadata'      => $metadata ?: null,
+        ]);
     }
 
     /**
