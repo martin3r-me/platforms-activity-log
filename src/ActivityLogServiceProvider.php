@@ -29,8 +29,8 @@ class ActivityLogServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => resource_path('views/vendor/activity-log'),
         ], 'views');
 
-        // Livewire-Komponente registrieren
-        
+        // LLM-Tools registrieren
+        $this->registerTools();
     }
 
     public function register(): void
@@ -40,6 +40,18 @@ class ActivityLogServiceProvider extends ServiceProvider
             __DIR__ . '/../config/activity-log.php',
             'activity-log'
         );
+    }
+
+    protected function registerTools(): void
+    {
+        try {
+            $registry = resolve(\Platform\Core\Tools\ToolRegistry::class);
+
+            $registry->register(new \Platform\ActivityLog\Tools\ListActivitiesTool());
+            $registry->register(new \Platform\ActivityLog\Tools\CreateActivityNoteTool());
+        } catch (\Throwable $e) {
+            // Silent fail - ToolRegistry möglicherweise nicht verfügbar
+        }
     }
 
     protected function registerLivewireComponents(): void
